@@ -7,7 +7,8 @@ typedef struct {
     int spot_number;
     bool occupied;
     char license_plate[10];
-} ParkingSpot;
+} 
+ParkingSpot;
 
 ParkingSpot parking_lot[MAX_SPOTS];
 
@@ -21,23 +22,23 @@ void initializeParkingLot() {
 void displayParkingLot() {
     printf("Parking Lot Status:\n");
     for (int i = 0; i < MAX_SPOTS; i++) {
-        printf("Spot %d: %s\n", parking_lot[i].spot_number, parking_lot[i].occupied ? parking_lot[i].license_plate : "Empty");
+    printf("Spot %d: %s\n", parking_lot[i].spot_number, parking_lot[i].occupied ? parking_lot[i].license_plate : "Empty");
     }
 }
 
 int findEmptySpot() {
     for (int i = 0; i < MAX_SPOTS; i++) {
-        if (!parking_lot[i].occupied) {
-            return i;
+    if (!parking_lot[i].occupied) {
+    return i;
         }
     }
-    return -1; // No empty spots available
+    return -1;
 }
 
 int main() {
     initializeParkingLot();
 
-    while (1) {
+while (1) {
         printf("\nCar Parking System Menu:\n");
         printf("1. Park a car\n");
         printf("2. Remove a car\n");
@@ -56,7 +57,8 @@ int main() {
                     printf("Enter the license plate of the parked car: ");
                     scanf("%s", parking_lot[empty_spot].license_plate);
                     printf("Car parked in Spot %d\n", parking_lot[empty_spot].spot_number);
-                } else {
+                }
+                else {
                     printf("Sorry, the parking lot is full.\n");
                 }
                 break;
@@ -67,14 +69,16 @@ int main() {
                 scanf("%d", &spot_to_remove);
 
                 if (spot_to_remove >= 1 && spot_to_remove <= MAX_SPOTS) {
-                    if (parking_lot[spot_to_remove - 1].occupied) {
+                if (parking_lot[spot_to_remove - 1].occupied) {
                         parking_lot[spot_to_remove - 1].occupied = false;
                         printf("Car removed from Spot %d\n", spot_to_remove);
-                    } else {
+                    }
+                else {
                         printf("Spot %d is already empty.\n", spot_to_remove);
                     }
-                } else {
-                    printf("Invalid spot number.\n");
+                }
+                else {
+                        printf("Invalid spot number.\n");
                 }
                 break;
 
